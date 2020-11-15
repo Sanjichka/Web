@@ -91,13 +91,41 @@
                 {
                     border: 7px solid #31c25a;
                     border-radius: 50px;
+                    width:"150";
+                    height:"175";
                 }
                 .lis
                 {
                     font-size: large;
                     color:rgb(210, 30, 120);
                 }
+                
         </style>    
+        <script type="text/javascript">
+            var icon;
+            var pictures = ["pufislika1","pufislika2","pufislika3","pufislika4","pufislika5","pufislika6"];
+            var descr = ["pufi1","pufi2","pufi3","pufi4","pufi5","pufi6"];
+            function start()
+            {
+                window.alert("Ovaa stranica koristi web kolachinja!");
+                var name = window.prompt("Vnesi go tvoeto ime, korisniku!");
+                var t = document.getElementById("bla");
+                t.innerHTML="Zdravo <span style='color:rgb(210, 30, 120)'>"+name+"</span>, ";
+                icon = document.getElementById("menuva");
+                icon.addEventListener("click",pickImage,false);
+                var dr = document.getElementById("d");
+                dr.innerHTML=document.lastModified;
+            }
+
+            function pickImage()
+            {
+                var index = Math.floor(Math.random()*6);
+                icon.setAttribute("src",pictures[index]+".jpg");
+                icon.setAttribute("alt",descr[index]);
+            }
+
+            window.addEventListener("load",start,false);
+        </script>
     </head>
     <body>
             <header class="scrl">
@@ -110,7 +138,7 @@
                     Rodena:<span class="poc">20.1.2000</span><br>
                     Mesto na zhiveenje:<span class="poc"> Skopje, Makedonija</span><br>
                     Fakultet: <span class="poc"><a class="link" href="https://feit.ukim.edu.mk/" target="_blank">FEIT</a></span><br>
-                    Zdravo chitatelu, <br>
+                    <span id="bla"></span> <br>
                     Jas sum Sanja kako shto mozhesh da vidish pogore i eve nekoi informacii so koi mozhesh podobro da me zapoznaesh:<br>
                 </p>
             </div>
@@ -121,7 +149,7 @@
                     </summary>
                     <div>
                     <p class="vnatre">Ima 1 &frac12; godinka, mnogu e energichna,<br> nejzinoto omileno mesto e pokraj frizhiderot.<br></p>
-                    <img class="gran" src="Pufi.jpg" alt="Pufi" width="150" height="175"></div>
+                    <img class="gran" id="menuva" src="pufislika1.jpg" alt="Pufi" width="150" height="175"></div>
                     </details>
                 </p>
                 <p><details>
@@ -194,9 +222,11 @@
                 </details>
                 </p><br><br><br><br><br>
                 <footer>
+                    <p id="d"></p>
                     <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
                 </footer>
             </div>
+            
             
     </body>
 </html>

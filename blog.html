@@ -58,7 +58,71 @@
                 list-style-position:inside;
                 text-align: center;
             }
+        #ide,#ide1
+            {
+                float:right;
+                padding:.2em;
+            }
+        #po
+            {
+                margin-left:20%;
+            }
         </style>
+        <script type="text/javascript">
+            
+            var inputVal="Sport - normalna fizichka aktivnost ili veshtina izvedena pod javno prifateni pravila i so cel "+
+            "da rekreira: za natprevaruvanje, za sopstveno uzhivanje, za uzhivanje, za usovrshuvanje, za "+
+            "razvivanje na veshtina, ili za kombinacija od navedenite. Ona shto go karakterizira sekoj sport "+
+            "e jasnata cel, kombinirana so vpechatokot za individualna (ili timska) veshtina ili sposobnost. "+
+            "Prvite sportovi kako na primer lov i trchanje nastanale bidejkji bile potrebni da se prezhivee. "+
+            "Za razlika od togash, deneska lugjeto se zanimavaat so sport za zdravje i relaksacija.";
+            function start()
+            {
+                var dr = document.getElementById("d");
+                dr.innerHTML=document.lastModified;
+                var k = document.getElementById("ide");
+                k.addEventListener("click",kop,false);
+            }
+
+            function kop()
+            {
+                var st = document.getElementById("ide1").value;
+                var elem = inputVal.indexOf(st);
+                if(elem != -1)
+                {
+                    var l=st.length;
+                    var len=inputVal.length;
+                    var niza1 = new Array();
+                    for(var i=0;i<elem;i++)
+                    {
+                        niza1[i]=inputVal.charAt(i);
+                    }
+                    
+                    var niza2 = new Array();
+                    for(var t=0;t<l;t++)
+                    {
+                        niza2[t]=inputVal.charAt(i++);
+                    }
+
+                    var niza3 = new Array();
+                    var stop=0;
+                    while(i<len)
+                    {
+                        niza3[stop++]=inputVal.charAt(i);
+                        i++;
+                    }
+
+                
+                var prv=niza1.join("");
+                var vtor=niza2.join("");
+                var tret=niza3.join("");
+                var sportz = document.getElementById("spt");
+                sportz.innerHTML="<p style='color:chocolate;font-size: large;font-weight: 500;text-shadow: -1px 1px .5px #31c25a;text-decoration: underline rgb(210, 30, 120);font-size: x-large;'>"+prv+"<mark>"+vtor+"</mark>"+tret+"</p>";
+                }
+            }
+
+            window.addEventListener("load",start,false);
+        </script>
     </head>
     <body>
         <header class="scrl">
@@ -66,8 +130,9 @@
         </header>
     
         <section class="gr">
-            <h1 class="kj">SPORT</h1><br><br>
-            <p class="clo">Sport - normalna fizichka aktivnost ili veshtina izvedena pod javno prifateni pravila i so cel
+            <h1 class="kj"><span id="po">SPORT</span><input id="ide1" type="text"><input id="ide" type="button" value="Search"></h1><br><br>
+            
+            <p id="spt" class="clo">Sport - normalna fizichka aktivnost ili veshtina izvedena pod javno prifateni pravila i so cel
             da rekreira: za natprevaruvanje, za sopstveno uzhivanje, za uzhivanje, za usovrshuvanje, za
             razvivanje na veshtina, ili za kombinacija od navedenite. Ona shto go karakterizira sekoj sport
             e jasnata cel, kombinirana so vpechatokot za individualna (ili timska) veshtina ili sposobnost.
@@ -92,6 +157,7 @@
                 <aside class="clo">Za povekje informacii okolu razlichnite vidovi sportovi mozhesh da najdesh na sledniot link:<br><a class="clo" href="https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8_%D0%BD%D0%B0_%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BE%D0%B2%D0%B8" target="_blank">Pritisni tuka.</a></aside><br><br><br><br><br><br>
             </nav>
             <footer>
+                <p id="d"></p>
                 <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
             </footer>
         </section>

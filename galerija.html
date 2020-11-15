@@ -40,13 +40,9 @@
         th 
             {
                 padding: 25px;
+                margin-top: 0;
             }
         .textarea
-            {
-                position:relative;
-                left:34%;
-            }
-        .kopche
             {
                 position:relative;
                 left:34%;
@@ -63,7 +59,155 @@
                 border: 7px solid #31c25a;
                 border-radius: 50px;
             }
+        #srce,#srce1,#srce2,#srce3
+            {
+                border: 1px dotted #cf61b3;
+                width:62px;
+                height:52px;
+            }
+        
         </style>
+        <script type="text/javascript">
+            var count=[0,0,0,0];
+            var nizaprolet = new Array ();
+            var nizaleto = new Array ();
+            var nizaesen = new Array ();
+            var nizazima = new Array ();
+            var iprolet=0;
+            var ileto=0;
+            var iesen=0;
+            var izima=0; //ovie iprolet... se za brojac za pozicija vo ramki na niza vo globala nizive se ako trebaat podatocite od komentarite za sortiranje
+            function start()
+            {
+                var dr = document.getElementById("d");
+                dr.innerHTML=document.lastModified;
+                var r = document.getElementById("cli");
+                r.addEventListener("click",add,false);
+                var r1 = document.getElementById("cli1");
+                r1.addEventListener("click",add1,false);
+                var r2 = document.getElementById("cli2");
+                r2.addEventListener("click",add2,false);
+                var r3 = document.getElementById("cli3");
+                r3.addEventListener("click",add3,false);
+                var sl = document.getElementById("srce");
+                sl.addEventListener("click",br,false);
+                var sl1 = document.getElementById("srce1");
+                sl1.addEventListener("click",br1,false);
+                var sl2 = document.getElementById("srce2");
+                sl2.addEventListener("click",br2,false);
+                var sl3 = document.getElementById("srce3");
+                sl3.addEventListener("click",br3,false);
+                brojac.innerHTML=count[0];
+                brojac1.innerHTML=count[1];
+                brojac2.innerHTML=count[2];
+                brojac3.innerHTML=count[3];
+            }
+            function br()
+            {
+                ++count[0];
+                brojac.innerHTML=count[0];
+            }
+            function br1()
+            {
+                ++count[1];
+                brojac1.innerHTML=count[1];
+            }
+            function br2()
+            {
+                ++count[2];
+                brojac2.innerHTML=count[2];
+            }
+            function br3()
+            {
+                ++count[3];
+                brojac3.innerHTML=count[3];
+            }
+
+            function add()
+            {
+            var rez = document.getElementById("res");
+            var txr = document.getElementById("txt");
+            var tx = txr.value;
+            var input = document.createElement("input");
+            input.type = "text";
+            input.value=tx;
+            nizaprolet[iprolet++]=tx;
+            rez.appendChild(input);
+            var cr = document.createElement("input");
+            cr.type = "text";
+            var now = new Date();
+            cr.value = now;
+            nizaprolet[iprolet++]=now;
+            rez.appendChild(cr);
+            var br = document.createElement("br");
+            rez.appendChild(br);
+            txr.value="";
+            }
+
+            function add1()
+            {
+            var rez = document.getElementById("res1");
+            var txr = document.getElementById("txt1");
+            var tx = txr.value;
+            nizaleto[ileto++]=tx;
+            var input = document.createElement("input");
+            input.type = "text";
+            input.value=tx;
+            rez.appendChild(input);
+            var cr = document.createElement("input");
+            cr.type = "text";
+            var now = new Date();
+            nizaleto[ileto++]=now;
+            cr.value = now;
+            rez.appendChild(cr);
+            var br = document.createElement("br");
+            rez.appendChild(br);
+            txr.value="";
+            }
+
+            function add2()
+            {
+            var rez = document.getElementById("res2");
+            var txr = document.getElementById("txt2");
+            var tx = txr.value;
+            nizaesen[iesen++]=tx;
+            var input = document.createElement("input");
+            input.type = "text";
+            input.value=tx;
+            rez.appendChild(input);
+            var cr = document.createElement("input");
+            cr.type = "text";
+            var now = new Date();
+            nizaesen[iesen++]=now;
+            cr.value = now;
+            rez.appendChild(cr);
+            var br = document.createElement("br");
+            rez.appendChild(br);
+            txr.value="";
+            }
+
+            function add3()
+            {
+            var rez = document.getElementById("res3");
+            var txr = document.getElementById("txt3");
+            var tx = txr.value;
+            nizazima[izima++]=tx;
+            var input = document.createElement("input");
+            input.type = "text";
+            input.value=tx;
+            rez.appendChild(input);
+            var cr = document.createElement("input");
+            cr.type = "text";
+            var now = new Date();
+            nizazima[izima++]=now;
+            cr.value = now;
+            rez.appendChild(cr);
+            var br = document.createElement("br");
+            rez.appendChild(br);
+            txr.value="";
+            }
+        window.addEventListener("load",start,false);
+        </script>
     </head>
     <body>
         <header class="scrl">
@@ -72,7 +216,7 @@
         <table>
             <form method="POST" action="galerija.html">
                 <tr>
-                    <th colspan="2"><h1 class="naslov">Izberi omileno godishno vreme:</h1></th>
+                    <th colspan="2"><h1 class="naslov">Odberi godishno vreme koe ti se dopagja (edno ili povekje) i ostavi komentar zoshto</h1></th>
                 </tr>
                 <tr>
                     <th><img src="spring.jpg" alt="SPRING"></th>
@@ -81,13 +225,40 @@
                 <tr>
                     <th>
                             <label class="link">
-                                <input type="radio" name="vreme" value="str">Prolet
+                                <h3 class="link" style='margin:0;'>Prolet</h3>
+                                <img id="srce" src="pink-heart.jpg" alt="like"><span id="brojac"></span>
                             </label>
                     </th>
                     <th>
                             <label class="link">
-                                <input type="radio" name="vreme" value="sum">Leto
+                                <h3 class="link" style='margin:0;'>Leto</h3>
+                                <img id="srce1" src="pink-heart.jpg" alt="like"><span id="brojac1"></span>
                             </label>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        
+                        <form method="POST" action=#>
+                            <input id="txt" type="text">
+                            <input id="cli" type="button" value="ADD">
+                        </form>
+                        <p id="res" style='margin:0;'></p>
+                    </th>
+                    <th>
+                        <form method="POST" action=#>
+                            <input id="txt1" type="text">
+                            <input id="cli1" type="button" value="ADD">
+                        </form>
+                        <p id="res1" style='margin:0;'></p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+
                     </th>
                 </tr>
                 <tr>
@@ -95,28 +266,48 @@
                     <th><img src="winter.jpg" alt="WINTER"></th>
                 </tr>
                 <tr>
+                    <th><label class="link">
+                        <h3 class="link" style='margin:0;'>Esen</h3>
+                        <img id="srce2" src="pink-heart.jpg" alt="like"><span id="brojac2"></span>
+                        </label> 
+                    </th>
+                    <th><label class="link">
+                        <h3 class="link" style='margin:0;'>Zima</h3>
+                        <img id="srce3" src="pink-heart.jpg" alt="like"><span id="brojac3"></span>
+                        </label> 
+                    </th>
+                </tr>
+                
+                <tr>
                     <th>
-                        <label class="link">
-                            <input type="radio" name="vreme" value="aut">Esen
-                        </label>
+                        <form method="POST" action=#>
+                            <input id="txt2" type="text">
+                            <input id="cli2" type="button" value="ADD">
+                        </form>
+                        <p id="res2" style='margin:0;'></p>
                     </th>
                     <th>
-                        <label class="link">
-                            <input type="radio" name="vreme" value="win">Zima
-                        </label>
+                        <form method="POST" action=#>
+                            <input id="txt3" type="text">
+                            <input id="cli3" type="button" value="ADD">
+                        </form>
+                        <p id="res3" style='margin:0;'></p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+
                     </th>
                 </tr>
             
         </table>
-        <p>
-            <textarea class="textarea" rows=7 cols=60 placeholder="Objasni zoshto tokmu toa e tvoeto omileno godishno vreme."></textarea>
-        </p>
-        <p class="kopche">
-            <input style="margin-right: 345px;" type="submit" value="Isprati">
-            <input type="reset" value="Izbrishi">
-        </p>
+        
     </form>
     <footer>
+        <p id="d"></p>
         <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
     </footer>
     </body>

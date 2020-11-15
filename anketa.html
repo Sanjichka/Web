@@ -77,6 +77,14 @@
                 background-color: rgb(185, 214, 194);
             }
         </style>
+        <script type="text/javascript">
+            function start()
+            {
+                var dr = document.getElementById("d");
+                dr.innerHTML=document.lastModified;
+            }
+            window.addEventListener("load",start,false);
+        </script>
     </head>
     <body>
         <header class="scrl">
@@ -191,6 +199,7 @@
             </nav>
         </form>
         <footer>
+            <p id="d"></p>
             <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
         </footer>
     </body>

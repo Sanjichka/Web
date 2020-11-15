@@ -46,6 +46,16 @@
                 margin-top: auto;
             }
         </style>
+        <script type="text/javascript">
+            function start()
+            {
+                var dr = document.getElementById("d");
+                dr.innerHTML=document.lastModified;
+                var url = "www.google.com";
+                window.open('http://facebook.com/sharer/sharer.php?u='+encodeURIComponent(url), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+            }
+            window.addEventListener("load",start,false);
+        </script>
     </head>
     <body>
         <header class="scrl">
@@ -60,8 +70,15 @@
             <p class="t">Fiksen telefonski broj: 02/123-4567</p><br><br><br>
             <p class="t">Mobilen telefonski broj: 070-123-456</p><br><br><br>
         </address>
+
+        <a href="https://www.facebook.com/sharer/sharer.php?u=home.html" target="_blank">
+            <img src="share.jpg" alt="share" height="80" weight="80">
+        </a>
+
         </div>
+        
         <footer>
+            <p id="d"></p>
             <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
         </footer>
     </body>
