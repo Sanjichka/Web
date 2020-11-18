@@ -68,7 +68,7 @@
         
         </style>
         <script type="text/javascript">
-            var count=[0,0,0,0];
+            //var count=[0,0,0,0]; ova beshe samo da si broi lajkovi
             var nizaprolet = new Array ();
             var nizaleto = new Array ();
             var nizaesen = new Array ();
@@ -77,6 +77,7 @@
             var ileto=0;
             var iesen=0;
             var izima=0; //ovie iprolet... se za brojac za pozicija vo ramki na niza vo globala nizive se ako trebaat podatocite od komentarite za sortiranje
+            var nizaid=[0,0,0,0];
             function start()
             {
                 var dr = document.getElementById("d");
@@ -89,20 +90,90 @@
                 r2.addEventListener("click",add2,false);
                 var r3 = document.getElementById("cli3");
                 r3.addEventListener("click",add3,false);
-                var sl = document.getElementById("srce");
+                /*var sl = document.getElementById("srce");
                 sl.addEventListener("click",br,false);
                 var sl1 = document.getElementById("srce1");
                 sl1.addEventListener("click",br1,false);
                 var sl2 = document.getElementById("srce2");
                 sl2.addEventListener("click",br2,false);
                 var sl3 = document.getElementById("srce3");
-                sl3.addEventListener("click",br3,false);
-                brojac.innerHTML=count[0];
+                sl3.addEventListener("click",br3,false);*/
+                var sl = document.getElementById("srce");
+                sl.addEventListener("click",klik,false);
+                var sl1 = document.getElementById("srce1");
+                sl1.addEventListener("click",klik1,false);
+                var sl2 = document.getElementById("srce2");
+                sl2.addEventListener("click",klik2,false);
+                var sl3 = document.getElementById("srce3");
+                sl3.addEventListener("click",klik3,false);
+                /*brojac.innerHTML=count[0];
                 brojac1.innerHTML=count[1];
                 brojac2.innerHTML=count[2];
-                brojac3.innerHTML=count[3];
+                brojac3.innerHTML=count[3];*/
             }
-            function br()
+            function klik()
+            {
+                ++nizaid[0];
+                var slik = document.getElementById("srce");
+                if(nizaid[0]%2!=0)
+                {
+                    slik.setAttribute("src","pink-heart.jpg");
+                    slik.setAttribute("alt","like");
+                }
+                else
+                {
+                    slik.setAttribute("src","crno-srcence.jpg");
+                    slik.setAttribute("alt","dislike");
+                }
+            }
+            function klik1()
+            {
+                ++nizaid[1];
+                var slik1 = document.getElementById("srce1");
+                if(nizaid[1]%2!=0)
+                {
+                    slik1.setAttribute("src","pink-heart.jpg");
+                    slik1.setAttribute("alt","like");
+                }
+                else
+                {
+                    slik1.setAttribute("src","crno-srcence.jpg");
+                    slik1.setAttribute("alt","dislike");
+                }
+            }
+            function klik2()
+            {
+                ++nizaid[2];
+                var slik2 = document.getElementById("srce2");
+                if(nizaid[2]%2!=0)
+                {
+                    slik2.setAttribute("src","pink-heart.jpg");
+                    slik2.setAttribute("alt","srce-rozovo");
+                }
+                else
+                {
+                    slik2.setAttribute("src","crno-srcence.jpg");
+                    slik2.setAttribute("alt","dislike");
+                }
+            }
+            function klik3()
+            {
+                ++nizaid[3];
+                var slik3 = document.getElementById("srce3");
+                if(nizaid[3]%2!=0)
+                {
+                    slik3.setAttribute("src","pink-heart.jpg");
+                    slik3.setAttribute("alt","like");
+                }
+                else
+                {
+                    slik3.setAttribute("src","crno-srcence.jpg");
+                    slik3.setAttribute("alt","dislike");
+                }
+            }
+
+
+            /*function br() ova beshe samo da si broi lajkovi
             {
                 ++count[0];
                 brojac.innerHTML=count[0];
@@ -121,27 +192,25 @@
             {
                 ++count[3];
                 brojac3.innerHTML=count[3];
-            }
+            }*/
 
             function add()
             {
             var rez = document.getElementById("res");
+            var dod="";
             var txr = document.getElementById("txt");
             var tx = txr.value;
-            var input = document.createElement("input");
-            input.type = "text";
-            input.value=tx;
+            if(tx!=""){
+            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizaprolet[iprolet++]=tx;
-            rez.appendChild(input);
-            var cr = document.createElement("input");
-            cr.type = "text";
-            var now = new Date();
-            cr.value = now;
+            
+            var now = new Date().toLocaleString();
+            
             nizaprolet[iprolet++]=now;
-            rez.appendChild(cr);
-            var br = document.createElement("br");
-            rez.appendChild(br);
+            
+            dod+=now+"<br>";
             txr.value="";
+            rez.innerHTML+=dod;}
             }
 
             function add1()
@@ -149,20 +218,18 @@
             var rez = document.getElementById("res1");
             var txr = document.getElementById("txt1");
             var tx = txr.value;
+            var dod="";
+            if(tx!=""){
+            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizaleto[ileto++]=tx;
-            var input = document.createElement("input");
-            input.type = "text";
-            input.value=tx;
-            rez.appendChild(input);
-            var cr = document.createElement("input");
-            cr.type = "text";
-            var now = new Date();
+            
+            var now = new Date().toLocaleString();
+            
             nizaleto[ileto++]=now;
-            cr.value = now;
-            rez.appendChild(cr);
-            var br = document.createElement("br");
-            rez.appendChild(br);
+            
+            dod+=now+"<br>";
             txr.value="";
+            rez.innerHTML+=dod;}
             }
 
             function add2()
@@ -170,20 +237,18 @@
             var rez = document.getElementById("res2");
             var txr = document.getElementById("txt2");
             var tx = txr.value;
+            var dod="";
+            if(tx!=""){
+            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizaesen[iesen++]=tx;
-            var input = document.createElement("input");
-            input.type = "text";
-            input.value=tx;
-            rez.appendChild(input);
-            var cr = document.createElement("input");
-            cr.type = "text";
-            var now = new Date();
+            
+            var now = new Date().toLocaleString();
+            
             nizaesen[iesen++]=now;
-            cr.value = now;
-            rez.appendChild(cr);
-            var br = document.createElement("br");
-            rez.appendChild(br);
+            
+            dod+=now+"<br>";
             txr.value="";
+            rez.innerHTML+=dod;}
             }
 
             function add3()
@@ -191,20 +256,18 @@
             var rez = document.getElementById("res3");
             var txr = document.getElementById("txt3");
             var tx = txr.value;
+            var dod="";
+            if(tx!=""){
+            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizazima[izima++]=tx;
-            var input = document.createElement("input");
-            input.type = "text";
-            input.value=tx;
-            rez.appendChild(input);
-            var cr = document.createElement("input");
-            cr.type = "text";
-            var now = new Date();
+            
+            var now = new Date().toLocaleString();
+            
             nizazima[izima++]=now;
-            cr.value = now;
-            rez.appendChild(cr);
-            var br = document.createElement("br");
-            rez.appendChild(br);
+            
+            dod+=now+"<br>";
             txr.value="";
+            rez.innerHTML+=dod;}
             }
         window.addEventListener("load",start,false);
         </script>
@@ -226,13 +289,14 @@
                     <th>
                             <label class="link">
                                 <h3 class="link" style='margin:0;'>Prolet</h3>
-                                <img id="srce" src="pink-heart.jpg" alt="like"><span id="brojac"></span>
+                                <img id="srce" src="crno-srcence.jpg" alt="dislike">
+                                <!--<span id="brojac"></span>-->
                             </label>
                     </th>
                     <th>
                             <label class="link">
                                 <h3 class="link" style='margin:0;'>Leto</h3>
-                                <img id="srce1" src="pink-heart.jpg" alt="like"><span id="brojac1"></span>
+                                <img id="srce1" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac1"></span>-->
                             </label>
                     </th>
                 </tr>
@@ -268,12 +332,12 @@
                 <tr>
                     <th><label class="link">
                         <h3 class="link" style='margin:0;'>Esen</h3>
-                        <img id="srce2" src="pink-heart.jpg" alt="like"><span id="brojac2"></span>
+                        <img id="srce2" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac2"></span>-->
                         </label> 
                     </th>
                     <th><label class="link">
                         <h3 class="link" style='margin:0;'>Zima</h3>
-                        <img id="srce3" src="pink-heart.jpg" alt="like"><span id="brojac3"></span>
+                        <img id="srce3" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac3"></span>-->
                         </label> 
                     </th>
                 </tr>
@@ -312,3 +376,18 @@
     </footer>
     </body>
 </html>
+
+<!--UPLOAD IMAGE
+    <script>
+    var loadFile = function(event) {
+var image = document.getElementById('output');
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+<body>
+    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+<p><img id="output" width="200" /></p>
+</body>
+ama realno ne sme uchele vaka, taka shto ne mozham da go vmetnam kodov :(
+-->

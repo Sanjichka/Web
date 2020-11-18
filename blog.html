@@ -67,9 +67,13 @@
             {
                 margin-left:20%;
             }
+        #zdr
+            {
+                text-align: center;
+            }
         </style>
         <script type="text/javascript">
-            
+            var res="";
             var inputVal="Sport - normalna fizichka aktivnost ili veshtina izvedena pod javno prifateni pravila i so cel "+
             "da rekreira: za natprevaruvanje, za sopstveno uzhivanje, za uzhivanje, za usovrshuvanje, za "+
             "razvivanje na veshtina, ili za kombinacija od navedenite. Ona shto go karakterizira sekoj sport "+
@@ -82,6 +86,19 @@
                 dr.innerHTML=document.lastModified;
                 var k = document.getElementById("ide");
                 k.addEventListener("click",kop,false);
+                var kr = document.getElementById("kop");
+                kr.addEventListener("click",klik,false);
+            }
+
+            function klik()
+            {
+                var obj = document.getElementById("sp");
+                var avt = document.getElementById("a").value;
+                var t = document.getElementById("t").value;
+                res+="<br>Avtor: "+ avt + "<br>";
+                res+="Vnesen tekst: "+t+"<br>";
+                
+                obj.innerHTML=res;
             }
 
             function kop()
@@ -154,12 +171,27 @@
                 <a class="clo" href="https://mk.wikipedia.org/wiki/%D0%95%D0%BA%D0%B8%D0%BF%D0%B5%D0%BD_%D1%81%D0%BF%D0%BE%D1%80%D1%82" target="_blank">Timski Sportovi</a><br>
                 <a class="clo" href="https://mk.wikipedia.org/wiki/%D0%A2%D1%80%D0%BA%D0%B0%D1%87%D0%BA%D0%B8_%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BE%D0%B2%D0%B8" target="_blank">Trkachki Sportovi</a><br>
                 <span class="clo">...</span><br>
-                <aside class="clo">Za povekje informacii okolu razlichnite vidovi sportovi mozhesh da najdesh na sledniot link:<br><a class="clo" href="https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8_%D0%BD%D0%B0_%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BE%D0%B2%D0%B8" target="_blank">Pritisni tuka.</a></aside><br><br><br><br><br><br>
-            </nav>
-            <footer>
-                <p id="d"></p>
-                <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
-            </footer>
+                <aside class="clo">Za povekje informacii okolu razlichnite vidovi sportovi mozhesh da najdesh na sledniot link:<br><a class="clo" href="https://mk.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8_%D0%BD%D0%B0_%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BE%D0%B2%D0%B8" target="_blank">Pritisni tuka.</a></aside>
+            </nav> 
         </section>
+        <section>
+            <h1 class="kj">NUDIME I MOZHNOST ZA VNES NA SOPSTVEN TEKST:</h1><br><br>
+            <div id="zdr">
+                <form method="POST" action=#>
+                    <label><span class="clo">Avtor:</span><br>
+                        <input id="a" type="text" >
+                    </label><br>
+                    <span class="clo">Tekst:</span><br>
+                        <textarea id="t" cols="85" rows="15" placeholder="Vnesi tekst..."></textarea>
+                    <br>
+                    <input id="kop" type="button" value="Objavi">
+                </form>
+                <p id="sp"></p><br><br>
+            </div>
+        </section>
+        <footer>
+            <p id="d"></p>
+            <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
+        </footer>
     </body>
 </html>
