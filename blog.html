@@ -95,10 +95,12 @@
                 var obj = document.getElementById("sp");
                 var avt = document.getElementById("a").value;
                 var t = document.getElementById("t").value;
-                res+="<br>Avtor: "+ avt + "<br>";
-                res+="Vnesen tekst: "+t+"<br>";
-                
+                if(t!="")
+                {
+                res+="<br><p style='color:chocolate;border:3px dotted rgb(210, 30, 120);white-space: pre-line;background-color:white;font-weight:bold;position:relative;margin:0 95px 0;'>Avtor: "+ avt + "<br>";
+                res+="Vnesen tekst: "+t+"</p><br>";
                 obj.innerHTML=res;
+                }
             }
 
             function kop()
