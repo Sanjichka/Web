@@ -65,6 +65,18 @@
                     padding: 10px;
                     box-sizing: border-box;
                 }
+                
+                #puf
+                {
+                    border-collapse: collapse;
+                    text-align:center;
+                    margin-top: 10px;
+                }
+                td
+                {
+                    padding: 10px; 
+                }
+           
                 .nadvor
                 {
                     color:rgb(210, 30, 120);
@@ -78,6 +90,14 @@
                 .link
                 {
                     color:rgb(210, 30, 120);
+                }
+                .link1
+                {
+                    color: chocolate;
+                }
+                tr:nth-child(odd)
+                {
+                    color: rgb(210, 30, 120);
                 }
                 .vnatre
                 {
@@ -99,8 +119,90 @@
                     font-size: large;
                     color:rgb(210, 30, 120);
                 }
-                
-        </style>    
+                #btn,#vnesrest,#zgslik,#namslik
+                {
+                    border: 2px groove rgb(210, 30, 120);
+                    background-color: #88e0a1;
+                    color: chocolate;
+                    font-weight: bolder;
+                }
+                #zgslik,#namslik
+                {
+                    margin-left: 12px;
+                }
+                #myin
+                {
+                    border: 2px groove rgb(210, 30, 120);
+                    color:red;
+                }
+                #imeto
+                {
+                    border: 2px groove rgb(210, 30, 120);
+                    color:rgb(210, 30, 120);
+                }
+                #linkot
+                {
+                    border: 2px groove rgb(210, 30, 120);
+                    color:rgb(210, 30, 120);
+                }
+                .klasa
+                {
+                    background-color: #31c25a;
+                }
+            footer
+                {
+                    color: chocolate;
+                    font-weight: bolder;
+                    text-decoration: underline rgb(210, 30, 120);
+                }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("#btn").on("click", function() {
+                var value = $("#myin").val().toLowerCase();
+                $("#puf tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            $("#myin").keydown(function(){
+                $("#myin").css("background-color", "chocolate");
+            });
+            $("#myin").keyup(function(){
+                $("#myin").css("background-color", "white");
+            });
+            $("#vnesrest").on("click", function() {
+                var value1 = $("#imeto").val();
+                var value2 = $("#linkot").val();
+                if(value1!="" && value2!="")
+                {
+                    $("#lista").append("<li><a style='font-size: large; color:rgb(210, 30, 120);' href="+value2+">"+value1+"</a></li>");
+                }
+            });
+            $("#zgslik").one("click",function(){
+                $("#menuva").animate({
+                left: '250px',
+                height: '+=130px',
+                width: '+=130px'
+                });
+            });
+            $("#namslik").one("click",function(){
+                $("#menuva").animate({
+                left: '2px',
+                height: '-=73px',
+                width: '-=73px'
+                });
+            });
+            $("details>summary").on("mouseover",function(){
+                $(this).addClass("klasa");
+            });
+            $("details>summary").on("mouseout",function(){
+                $(this).removeClass("klasa");
+            });
+
+        });
+        </script>
         <script type="text/javascript">
             var icon;
             var pictures = ["pufislika1","pufislika2","pufislika3","pufislika4","pufislika5","pufislika6"];
@@ -149,7 +251,10 @@
                     </summary>
                     <div>
                     <p class="vnatre">Ima 1 &frac12; godinka, mnogu e energichna,<br> nejzinoto omileno mesto e pokraj frizhiderot.<br></p>
-                    <img class="gran" id="menuva" src="pufislika1.jpg" alt="Pufi" width="150" height="175"></div>
+                    <img class="gran" id="menuva" src="pufislika1.jpg" alt="Pufi" width="150" height="175">
+                    <br><br><button id="zgslik">Zgolemi</button>
+                    <button id="namslik">Namali</button>
+                    </div>
                     </details>
                 </p>
                 <p><details>
@@ -157,42 +262,42 @@
                         Mnogu sakam da gledam filmovi, no toa e obratnoproporcionalno so <a class="link" href="https://feit.ukim.edu.mk/" target="_blank">FEIT</a>.
                     </summary>
                     <p class="vnatre">Vo slobodno vreme odam vo Cineplexx,<br> ovie se moite omileni proekcii za ovoj mesec:<br></p>
-                    <table border="2">
+                    <label><span class="vnatre">Vnesi cena za filtriranje: </span><input type="text" id="myin"></label>
+                    <button id="btn">Filtriraj</button>
+                    <table border="2" id="puf">
                         <thead>
                             <tr>
                                 <th rowspan="2"><img src="cineplexx.png" alt="CINEPLEXX" width="180" height="120"></th>
-                                <th>Film1</th>
-                                <th>Film2</th>
-                                <th>Film3</th>
+                                <th>Kategorija1</th>
+                                <th>Kategorija2</th>
+                                <th>Kategorija3</th>
                             </tr>
                             <tr>
-                                <td><a class="link" href="https://youtu.be/AZGcmvrTX9M" target="_blank">Tenet</a></td>
-                                <td><a class="link" href="https://youtu.be/X0K5cA2hS6g" target="_blank">Vojna so dedo</a></td>
-                                <td><a class="link" href="https://youtu.be/ZUa0Mtdv1HQ" target="_blank">Nezavisni</a></td>
+                                <th>Zhanr</th>
+                                <th>Vid proekcija</th>
+                                <th>Cena:</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>Zhanr</th>
+                                <td><a class="link" href="https://youtu.be/AZGcmvrTX9M" target="_blank">Tenet</a></td>
                                 <td>Akcija</td>
-                                <td>Komedija</td>
-                                <td>Drama</td>
-                            </tr>
-                            <tr>
-                                <th>Vid proekcija</th>
                                 <td>3D</td>
-                                <td>2D</td>
-                                <td>2D</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Cena:</th>
                                 <td>300den.</td>
-                                <td>250den.</td>
+                            </tr>
+                            <tr>
+                                <td><a class="link1" href="https://youtu.be/X0K5cA2hS6g" target="_blank">Vojna so dedo</a></td>
+                                <td>Komedija</td>
+                                <td>2D</td>
                                 <td>250den.</td>
                             </tr>
-                        </tfoot>
+                            <tr>
+                                <td><a class="link" href="https://youtu.be/ZUa0Mtdv1HQ" target="_blank">Nezavisni</a></td>
+                                <td>Drama</td>
+                                <td>2D</td>
+                                <td>250den.</td>
+                            </tr> 
+                        </tbody>
                     </table>
                     </details>
                 <p><details>
@@ -201,13 +306,17 @@
                     </summary>
                     <p class="vnatre">Hranata e mnogu vazhen del od nashiot zhivot,<br> pa eve nekoi restorani kako predlog za vkusna hrana:<br></p>
                     <nav>
-                        <ul>
+                        <ul id="lista">
                             <li><a class="lis" href="https://equilibrium.mk/" target="_blank">Restaurant &amp Coffee Bar Equilibrium</a></li>
                             <li><a class="lis" href="http://martinicaffe.mk/" target="_blank">Caffe Bar Martini</a></li>
                             <li><a class="lis" href="http://caffetrend.mk/" target="_blank">Trend Lounge Restaurant</a></li>
                             <li><a class="lis" href="https://revija.mk/wp/" target="_blank">Revija Bar &amp Food</a></li>
                         </ul>
                     </nav>
+                    <h3 class="vnatre">Vnesi go i tvojot omilen restoran:</h3>
+                    <label class="vnatre">Vnesi go imeto na restoranot: <input type="text" id="imeto"></label><br>
+                    <label class="vnatre">Vnesi go linkot na restoranot: <input type="text" id="linkot"></label><br><br>
+                    <button id="vnesrest">Vnesi</button>
                 </details>
                 </p>
                 <p><details>

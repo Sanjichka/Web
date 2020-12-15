@@ -34,7 +34,6 @@
         table
             {
                 width:60%;
-                padding-top:6%;
                 padding-left: 22%;
             }
         th 
@@ -65,8 +64,50 @@
                 width:62px;
                 height:52px;
             }
-        
+        #boi
+            {
+                margin-top: 120px;
+                text-align: center;
+                margin-right: 18px;
+            }
+        #boja1, #boja2, #boja3
+            {
+                border: 2px groove rgb(210, 30, 120);
+                background-color: #88e0a1;
+                color: chocolate;
+                font-weight: bolder;
+            }
+        footer
+            {
+                color: chocolate;
+                font-weight: bolder;
+                text-decoration: underline rgb(210, 30, 120);
+            }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#boja1").on("click",function(){
+            $("#hpr").css("color","rgb(210, 30, 120)");
+            $("#hle").css("color","rgb(210, 30, 120)");
+            $("#hes").css("color","rgb(210, 30, 120)");
+            $("#hzi").css("color","rgb(210, 30, 120)");
+          });
+          $("#boja2").on("click",function(){
+            $("#hpr").css("color","#0099cc");
+            $("#hle").css("color","#0099cc");
+            $("#hes").css("color","#0099cc");
+            $("#hzi").css("color","#0099cc");
+          });
+          $("#boja3").on("click",function(){
+            $("#hpr").css("color","green");
+            $("#hle").css("color","green");
+            $("#hes").css("color","green");
+            $("#hzi").css("color","green");
+          });
+        });
+        </script>
         <script type="text/javascript">
             //var count=[0,0,0,0]; ova beshe samo da si broi lajkovi
             var nizaprolet = new Array ();
@@ -125,6 +166,7 @@
                     slik.setAttribute("src","crno-srcence.jpg");
                     slik.setAttribute("alt","dislike");
                 }
+                
             }
             function klik1()
             {
@@ -276,6 +318,11 @@
         <header class="scrl">
             <h2 class="ta"><a class="link" href="home.html">DOMA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="galerija.html">GALERIJA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="blog.html">BLOG</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="anketa.html">ANKETA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="contact.html">KONTAKT</a></h2>
         </header>
+        <p id="boi">
+            <td><button id="boja1">Rozova</button></td>
+            <td><button id="boja2">Sina</button></td>
+            <td><button id="boja3">Zelena</button></td>
+        </p>
         <table>
             <form method="POST" action="galerija.html">
                 <tr>
@@ -288,14 +335,14 @@
                 <tr>
                     <th>
                             <label class="link">
-                                <h3 class="link" style='margin:0;'>Prolet</h3>
+                                <h3 class="link" style='margin:0;'><span id="hpr">Prolet</span></h3>
                                 <img id="srce" src="crno-srcence.jpg" alt="dislike">
                                 <!--<span id="brojac"></span>-->
                             </label>
                     </th>
                     <th>
                             <label class="link">
-                                <h3 class="link" style='margin:0;'>Leto</h3>
+                                <h3 class="link" style='margin:0;'><span id="hle">Leto</span></h3>
                                 <img id="srce1" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac1"></span>-->
                             </label>
                     </th>
@@ -331,12 +378,12 @@
                 </tr>
                 <tr>
                     <th><label class="link">
-                        <h3 class="link" style='margin:0;'>Esen</h3>
+                        <h3 class="link" style='margin:0;'><span id="hes">Esen</span></h3>
                         <img id="srce2" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac2"></span>-->
                         </label> 
                     </th>
                     <th><label class="link">
-                        <h3 class="link" style='margin:0;'>Zima</h3>
+                        <h3 class="link" style='margin:0;'><span id="hzi">Zima</span></h3>
                         <img id="srce3" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac3"></span>-->
                         </label> 
                     </th>

@@ -45,7 +45,40 @@
                 text-shadow: -1px 1px .5px #31c25a;
                 margin-top: auto;
             }
+            #mapz, #sv
+            {
+                border: 2px groove rgb(210, 30, 120);
+                background-color: #88e0a1;
+                color: chocolate;
+                margin-left:-15px;
+                font-weight: bolder;
+            }
+            .mai
+            {
+                color: #31c25a;
+            }
+            footer
+            {
+                color: chocolate;
+                font-weight: bolder;
+                text-decoration: underline rgb(210, 30, 120);
+            }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#mapz").on("click",function()
+          {
+                window.open("https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11859.11038380995!2d21.400036573889075!3d42.00504841241794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2smk!4v1607879206410!5m2!1sen!2smk","sanja");
+                
+          });
+          $("#sv").click(function(){
+            $("p.t").toggleClass("mai");
+          });
+        });
+ 
+        </script>
         <script type="text/javascript">
             function start()
             {
@@ -71,12 +104,13 @@
             <p class="t">Mobilen telefonski broj: 070-123-456</p><br><br><br>
         </address>
 
+        <button id="sv">Smeni boja</button><br><br><br>
+
         <a href="https://www.facebook.com/sharer/sharer.php?u=home.html" target="_blank">
             <img src="share.jpg" alt="share" height="80" weight="80">
-        </a>
-
+        </a><br><br><br>
+        <button id="mapz"><em>Location</em></button>
         </div>
-        
         <footer>
             <p id="d"></p>
             <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>

@@ -76,8 +76,31 @@
                 text-shadow: -1px 1px .5px #31c25a;
                 background-color: rgb(185, 214, 194);
             }
+        footer
+            {
+                color: chocolate;
+                font-weight: bolder;
+                text-decoration: underline rgb(210, 30, 120);
+            }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#klikz").on("click",function(){
+            if($("#tizm").val()!="")
+            {
+                alert("Blagodarime!");
+            }
+            else
+            {
+                alert("Te molam vrati se nazad i opishi ne so eden zbor :)");
+            }
+          });
+        });
+        </script>
         <script type="text/javascript">
+
             function start()
             {
                 var dr = document.getElementById("d");
@@ -90,7 +113,7 @@
         <header class="scrl">
             <h2 class="ta"><a class="link" href="home.html">DOMA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="galerija.html">GALERIJA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="blog.html">BLOG</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="anketa.html">ANKETA</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a class="link" href="contact.html">KONTAKT</a></h2>
         </header>
-        <form  class="sa" method="POST" action="home.html">
+        <form  class="sa" method="POST" action="#">
             <h3 class="portok">Za nas najvazhno e mislenjeto na nashite korisnici!<br> Popolni ja ovaa nasha mini anketa za da bideme vo tek so tvoite baranja</h3>
             <br><nav>
                 <ol class="ord">
@@ -191,9 +214,14 @@
                             <input type="radio" name="pogodg" ><span class="odg">Kolku razliki mozhesh da zabelezhish</span></label>
                         </label><br><br><br>
                     </li>
+                    <li class="nepar">
+                        <label>Opishi ja nashata stranica so eden zbor<br><br>
+                            <input type="text" id="tizm">
+                        </label><br><br><br>
+                    </li>
                 </ol>
                 <p>
-                    <input style="margin-right: 345px;" type="submit" value="Isprati">
+                    <input id="klikz" style="margin-right: 345px;" type="submit" value="Isprati">
                     <input type="reset" value="Izbrishi">
                 </p>
             </nav>
