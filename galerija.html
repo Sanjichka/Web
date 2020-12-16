@@ -122,11 +122,34 @@
             var nizaleto = new Array ();
             var nizaesen = new Array ();
             var nizazima = new Array ();
+            var dod="";
+            var dod1="";
+            var dod2="";
+            var dod3="";
             var iprolet=0;
             var ileto=0;
             var iesen=0;
             var izima=0; //ovie iprolet... se za brojac za pozicija vo ramki na niza vo globala nizive se ako trebaat podatocite od komentarite za sortiranje
             var nizaid=[0,0,0,0];
+            window.onbeforeunload = function() 
+            {
+                localStorage.setItem("nulti", JSON.stringify(dod));
+                localStorage.setItem("prvi", JSON.stringify(dod1));
+                localStorage.setItem("vtori", JSON.stringify(dod2));
+                localStorage.setItem("treti",JSON.stringify(dod3));
+            }
+            window.onload = function() 
+            {
+                var s_0 = JSON.parse(localStorage.getItem("nulti"));
+                var s_1 = JSON.parse(localStorage.getItem("prvi"));
+                var s_2 = JSON.parse(localStorage.getItem("vtori"));
+                var s_3 = JSON.parse(localStorage.getItem("treti"));
+ 
+                if(s_0 != null) dod=s_0; 
+                if(s_1 != null) dod1=s_1;
+                if(s_2 != null) dod2=s_2;
+                if(s_3 != null) dod3=s_3; 
+            }
             function start()
             {
                 var dr = document.getElementById("d");
@@ -221,8 +244,8 @@
                     slik3.setAttribute("alt","dislike");
                 }
             }
-
-
+           
+            
             /*function br() ova beshe samo da si broi lajkovi
             {
                 ++count[0];
@@ -243,11 +266,10 @@
                 ++count[3];
                 brojac3.innerHTML=count[3];
             }*/
-
+            
             function add()
             {
             var rez = document.getElementById("res");
-            var dod="";
             var txr = document.getElementById("txt");
             var tx = txr.value;
             if(tx!=""){
@@ -260,7 +282,9 @@
             
             dod+=now+"<br>";
             txr.value="";
-            rez.innerHTML+=dod;}
+            rez.innerHTML=dod;
+            
+            }
             }
 
             function add1()
@@ -268,18 +292,18 @@
             var rez = document.getElementById("res1");
             var txr = document.getElementById("txt1");
             var tx = txr.value;
-            var dod="";
             if(tx!=""){
-            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            dod1+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizaleto[ileto++]=tx;
             
             var now = new Date().toLocaleString();
             
             nizaleto[ileto++]=now;
             
-            dod+=now+"<br>";
+            dod1+=now+"<br>";
             txr.value="";
-            rez.innerHTML+=dod;
+            rez.innerHTML=dod1;
+
             }
             }
 
@@ -288,18 +312,17 @@
             var rez = document.getElementById("res2");
             var txr = document.getElementById("txt2");
             var tx = txr.value;
-            var dod="";
             if(tx!=""){
-            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            dod2+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizaesen[iesen++]=tx;
             
             var now = new Date().toLocaleString();
             
             nizaesen[iesen++]=now;
             
-            dod+=now+"<br>";
+            dod2+=now+"<br>";
             txr.value="";
-            rez.innerHTML+=dod;}
+            rez.innerHTML=dod2;}
             }
 
             function add3()
@@ -307,18 +330,17 @@
             var rez = document.getElementById("res3");
             var txr = document.getElementById("txt3");
             var tx = txr.value;
-            var dod="";
             if(tx!=""){
-            dod+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            dod3+=tx+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
             nizazima[izima++]=tx;
             
             var now = new Date().toLocaleString();
             
             nizazima[izima++]=now;
             
-            dod+=now+"<br>";
+            dod3+=now+"<br>";
             txr.value="";
-            rez.innerHTML+=dod;}
+            rez.innerHTML=dod3;}
             }
         window.addEventListener("load",start,false);
         </script>
