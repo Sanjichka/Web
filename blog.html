@@ -97,6 +97,13 @@
                 text-decoration: underline #31c25a;
                 font-size: x-large;
             }
+        #ide, #kop
+            {
+                border: 2px groove rgb(210, 30, 120);
+                background-color: #88e0a1;
+                color: chocolate;
+                font-weight: bolder;
+            }
         footer
             {
                 color: chocolate;
@@ -146,12 +153,28 @@
                 var obj = document.getElementById("sp");
                 var avt = document.getElementById("a").value;
                 var t = document.getElementById("t").value;
+                if(avt!="" && t=="")
+                {
+                    window.alert("Avtoru "+avt+", vnesi text!");
+                }
                 if(t!="")
                 {
-                res+="<br><p style='color:chocolate;border:3px dotted rgb(210, 30, 120);white-space: pre-line;background-color:white;font-weight:bold;position:relative;margin:0 95px 0;'>Avtor: "+ avt + "<br>";
-                res+="Vnesen tekst: "+t+"<br>"+document.lastModified+"</p><br>";
-                obj.innerHTML=res;
+                    if(avt!="")
+                    {
+                        res+="<br><p style='color:chocolate;border:3px dotted rgb(210, 30, 120);white-space: pre-line;background-color:white;font-weight:bold;position:relative;margin:0 95px 0;'>Avtor: "+ avt + "<br>";
+                        res+="Vnesen tekst: "+t+"<br>"+document.lastModified+"</p><br>";
+                        obj.innerHTML=res;
+                    }
+                    else
+                    {
+                        res+="<br><p style='color:chocolate;border:3px dotted rgb(210, 30, 120);white-space: pre-line;background-color:white;font-weight:bold;position:relative;margin:0 95px 0;'>Avtor: Nepoznat<br>";
+                        res+="Vnesen tekst: "+t+"<br>"+document.lastModified+"</p><br>";
+                        obj.innerHTML=res;
+                    }
+                document.getElementById("t").value="";
+                document.getElementById("a").value="";
                 }
+
             }
 
             function kop()

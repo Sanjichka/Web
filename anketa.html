@@ -82,6 +82,14 @@
                 font-weight: bolder;
                 text-decoration: underline rgb(210, 30, 120);
             }
+        #mapz, #klikz, #clikn
+            {
+                border: 2px groove rgb(210, 30, 120);
+                background-color: #88e0a1;
+                color: chocolate;
+                margin-left:-15px;
+                font-weight: bolder;
+            }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
@@ -96,6 +104,9 @@
             {
                 alert("Te molam vrati se nazad i opishi ne so eden zbor :)");
             }
+          });
+          $("#clikn").on("click",function(){
+            $("li").slice(1,10).fadeToggle(3000);
           });
         });
         </script>
@@ -221,8 +232,9 @@
                     </li>
                 </ol>
                 <p>
+                    <button id="clikn" style="margin-left: 25px;">Neophodno</button><br>
                     <input id="klikz" style="margin-right: 345px;" type="submit" value="Isprati">
-                    <input type="reset" value="Izbrishi">
+                    <input id="mapz" type="reset" value="Izbrishi">
                 </p>
             </nav>
         </form>
