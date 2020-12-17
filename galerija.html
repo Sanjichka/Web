@@ -83,7 +83,7 @@
                 font-weight: bolder;
                 text-decoration: underline rgb(210, 30, 120);
             }
-        #cli, #cli1, #cli2, #cli3
+        #cli, #cli1, #cli2, #cli3, #ck
             {
                 border: 2px groove rgb(210, 30, 120);
                 background-color: #88e0a1;
@@ -91,10 +91,31 @@
                 margin-left:-15px;
                 font-weight: bolder;
             }
+        #file
+            {
+                margin-left: 42%;
+            }
+        #sr
+            {
+                margin-left: 46%;
+                border: 2px groove rgb(210, 30, 120);
+                background-color: #88e0a1;
+                color: chocolate;
+                font-weight: bolder;
+            }
+        .hi
+            {
+                display: none;
+            }
+        #resk
+            {
+                font-weight: bolder;
+            }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <script>
+        
         $(document).ready(function(){
           $("#boja1").on("click",function(){
             $("#hpr").css("color","rgb(210, 30, 120)");
@@ -114,10 +135,14 @@
             $("#hes").css("color","green");
             $("#hzi").css("color","green");
           });
+          
         });
         </script>
         <script type="text/javascript">
-            //var count=[0,0,0,0]; ova beshe samo da si broi lajkovi
+        //nekako chudno mi e da mozhe eden chovek povekje lajkovi da klika,
+        //zatoa mi se so slika srceto da se popolnuva, no ete primer
+        //na chetvrtata slika zima i broi lajkovi kolku da see iskoristi toj del
+            var count=[0,0,0,0]; //ova beshe samo da si broi lajkovi
             var nizaprolet = new Array ();
             var nizaleto = new Array ();
             var nizaesen = new Array ();
@@ -131,6 +156,7 @@
             var iesen=0;
             var izima=0; //ovie iprolet... se za brojac za pozicija vo ramki na niza vo globala nizive se ako trebaat podatocite od komentarite za sortiranje
             var nizaid=[0,0,0,0];
+            var dodadi="";
             window.onbeforeunload = function() 
             {
                 localStorage.setItem("nulti", JSON.stringify(dod));
@@ -154,6 +180,8 @@
             {
                 var dr = document.getElementById("d");
                 dr.innerHTML=document.lastModified;
+                var endi = document.getElementById("ck");
+                ck.addEventListener("click",endifunc,false);
                 var r = document.getElementById("cli");
                 r.addEventListener("click",add,false);
                 var r1 = document.getElementById("cli1");
@@ -167,9 +195,9 @@
                 var sl1 = document.getElementById("srce1");
                 sl1.addEventListener("click",br1,false);
                 var sl2 = document.getElementById("srce2");
-                sl2.addEventListener("click",br2,false);
+                sl2.addEventListener("click",br2,false);*/
                 var sl3 = document.getElementById("srce3");
-                sl3.addEventListener("click",br3,false);*/
+                sl3.addEventListener("click",br3,false);
                 var sl = document.getElementById("srce");
                 sl.addEventListener("click",klik,false);
                 var sl1 = document.getElementById("srce1");
@@ -180,8 +208,23 @@
                 sl3.addEventListener("click",klik3,false);
                 /*brojac.innerHTML=count[0];
                 brojac1.innerHTML=count[1];
-                brojac2.innerHTML=count[2];
-                brojac3.innerHTML=count[3];*/
+                brojac2.innerHTML=count[2];*/
+                brojac3.innerHTML=count[3];
+            }
+            function endifunc()
+            {
+                var tekstot = $("#txtk").val();
+                
+                if(tekstot!="")
+                {
+                    dodadi+=tekstot+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+
+                    var now = new Date().toLocaleString();
+                    dodadi+=now+"<br>";
+                    $("#txtk").val("");
+
+                    document.getElementById("resk").innerHTML=dodadi;
+                }
             }
             function klik()
             {
@@ -260,12 +303,12 @@
             {
                 ++count[2];
                 brojac2.innerHTML=count[2];
-            }
+            }*/
             function br3()
             {
                 ++count[3];
                 brojac3.innerHTML=count[3];
-            }*/
+            }
             
             function add()
             {
@@ -344,6 +387,16 @@
             }
         window.addEventListener("load",start,false);
         </script>
+        <script>
+            var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            $(".hi").css({"display":"block","margin-left":"43%"});
+            
+            };
+            
+
+        </script>
     </head>
     <body>
         <header class="scrl">
@@ -415,7 +468,7 @@
                     </th>
                     <th><label class="link">
                         <h3 class="link" style='margin:0;'><span id="hzi">Zima</span></h3>
-                        <img id="srce3" src="crno-srcence.jpg" alt="dislike"><!--<span id="brojac3"></span>-->
+                        <img id="srce3" src="crno-srcence.jpg" alt="dislike"><span id="brojac3"></span>
                         </label> 
                     </th>
                 </tr>
@@ -448,24 +501,18 @@
         </table>
         
     </form>
+    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+    <p><label for="file" id="sr" style="cursor: pointer;">Upload Image</label></p>
+    
+    <section class="hi">
+        <p><img id="output" width="200" /></p>
+        <input id="txtk" type="text">
+        <input id="ck" type="button" value="ADD">
+        <p id="resk"></p>
+    </section>
     <footer>
         <p id="d"></p>
         <h6>&copy;2020 by Sanja Siljanoska, Inc. All Rights Reserved.</h6>
     </footer>
     </body>
 </html>
-
-<!--UPLOAD IMAGE
-    <script>
-    var loadFile = function(event) {
-var image = document.getElementById('output');
-image.src = URL.createObjectURL(event.target.files[0]);
-};
-</script>
-<body>
-    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-<p><img id="output" width="200" /></p>
-</body>
-ama realno ne sme uchele vaka, taka shto ne mozham da go vmetnam kodov :(
--->
